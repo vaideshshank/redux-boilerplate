@@ -1,97 +1,36 @@
-import { createStore, combineReducers, applyMiddleware } from "redux";
-import logger from "redux-logger";
 import React from "react";
 import { render } from "react-dom";
-import App from "./components/Handler";
+import App from "./containers/Handler";
 import { Provider } from "react-redux";
+import store from "./store";
 
-const initState = {
-  result: 1,
-  lastValues: []
-};
+// const myLogger = store => next => action => {
+//   console.log("Action : ", action);
+//   next(action);
+// };
 
-const mathReducer = (state = initState, action) => {
-  switch (action.type) {
-    case "ADD":
-      state = {
-        ...state,
-        result: state.result + action.payload,
-        lastValues: [...state.lastValues, action.payload]
-      };
-      break;
-    case "SUBTRACT":
-      state = {
-        ...state,
-        result: state.result - action.payload,
-        lastValues: [...state.lastValues, action.payload]
-      };
-      break;
-    default:
-      break;
-  }
-  return state;
-};
+// store.subscribe(() => {
+//   console.log("Store updated");
+//   console.log(store.getState());
+// });
 
-const userReducer = (
-  state = {
-    name: "Max",
-    age: 7
-  },
-  action
-) => {
-  switch (action.type) {
-    case "SET_NAME":
-      state = {
-        ...state,
-        name: action.payload
-      };
-      break;
-    case "SET_AGE":
-      state = {
-        ...state,
-        age: action.payload
-      };
-      break;
-    default:
-      break;
-  }
-  return state;
-};
+// store.dispatch(
+//   //action
+//   {
+//     type: "ADD",
+//     payload: 3
+//   }
+// );
 
-const myLogger = store => next => action => {
-  console.log("Action : ", action);
-  next(action);
-};
+// store.dispatch({
+//   type: "SUBTRACT",
+//   payload: 14
+// });
 
-// first arguent is the reducer,second argument is the initial state
-const store = createStore(
-  combineReducers({ mathReducer, userReducer }),
-  {},
-  applyMiddleware(myLogger, logger)
-);
-
-store.subscribe(() => {
-  console.log("Store updated");
-  console.log(store.getState());
-});
-
-store.dispatch(
-  //action
-  {
-    type: "ADD",
-    payload: 3
-  }
-);
-
-store.dispatch({
-  type: "SUBTRACT",
-  payload: 14
-});
-
-store.dispatch({
-  type: "SET_NAME",
-  payload: "Vaidesh"
-});
+// store.dispatch({
+//   type: "SET_NAME",
+//   payload: "Vaidesh"
+// });
 
 render(
   <Provider store={store}>

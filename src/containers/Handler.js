@@ -1,17 +1,13 @@
 import React from "react";
 
-import { User } from "./User";
-import { Main } from "./Main";
+import { User } from "../components/User";
+import { Main } from "../components/Main";
 // import { dispatch } from "redux";
 import { connect } from "react-redux";
 
-class App extends React.Component {
-  changeUsername(newName) {
-    this.setState({
-      username: newName
-    });
-  }
+// smart component
 
+class App extends React.Component {
   render() {
     return (
       <div className="container">
