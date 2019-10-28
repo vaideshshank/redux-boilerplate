@@ -4,6 +4,7 @@ import { User } from "../components/User";
 import { Main } from "../components/Main";
 // import { dispatch } from "redux";
 import { connect } from "react-redux";
+import { setName } from "../actions/userActions";
 
 // smart component
 
@@ -29,10 +30,7 @@ const mapStateToProps = state => {
 const mapDispathToProps = dispatch => {
   return {
     setName: name => {
-      dispatch({
-        type: "SET_NAME",
-        payload: name
-      });
+      dispatch(setName(name));
     }
   };
 };
