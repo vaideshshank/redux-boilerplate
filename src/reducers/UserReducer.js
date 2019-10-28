@@ -12,6 +12,12 @@ const UserReducer = (
         name: action.payload
       };
       break;
+    case "SET_NAME_FULFILLED":
+      state = {
+        ...state,
+        name: action.payload
+      };
+      break;
     case "SET_AGE":
       state = {
         ...state,

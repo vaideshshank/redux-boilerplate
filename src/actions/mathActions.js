@@ -1,18 +1,17 @@
-import store from "../store";
-
 export const addNumber = num => {
-  store.dispatch(
-    //action
-    {
-      type: "ADD",
-      payload: num
-    }
-  );
+  return dispatch => {
+    setTimeout(() => {
+      return dispatch({
+        type: "ADD",
+        payload: num
+      });
+    }, 2000);
+  };
 };
 
 export const subtractNumber = num => {
-  store.dispatch({
+  return {
     type: "SUBTRACT",
     payload: num
-  });
+  };
 };

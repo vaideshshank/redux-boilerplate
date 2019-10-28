@@ -1,8 +1,19 @@
-import store from "../store";
-
 export const setName = name => {
-  store.dispatch({
+  // return dispatch => {
+  //   setTimeout(() => {
+  //     return dispatch({
+  //       type: "SET_NAME",
+  //       payload: name
+  //     });
+  //   }, 2000);
+  // };
+
+  return {
     type: "SET_NAME",
-    payload: name
-  });
+    payload: new Promise((res, rej) => {
+      setTimeout(() => {
+        res(name);
+      }, 2000);
+    })
+  };
 };
