@@ -1,5 +1,9 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import logger from "redux-logger";
+import React from "react";
+import { render } from "react-dom";
+import App from "./components/Handler";
+import { Provider } from "react-redux";
 
 const initState = {
   result: 1,
@@ -88,3 +92,10 @@ store.dispatch({
   type: "SET_NAME",
   payload: "Vaidesh"
 });
+
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById("root")
+);
